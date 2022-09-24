@@ -1,0 +1,42 @@
+using System;
+class Solution{
+	
+ public static int SumOddLengthSubarrays(int[] arr) 
+ {   
+    int result = 0;
+    for(int i = 0; i < arr.Length; i++){
+        result += arr[i];
+    }
+
+    for(int i = 0; i < arr.Length; i++){
+        for(int j = i + 2; j < arr.Length; j += 2){
+            for(int t = i; t <= j; t++){
+                result += arr[t];
+            }
+        }
+    }
+	   return result;
+ }
+
+static public void Main()
+{
+	int[] arr = {1,4,2,5,3};
+		Console.WriteLine(SumOddLengthSubarrays(arr));
+    
+    //1. O(N^2 * log n)
+}
+}
+
+//2. O(N)
+
+public class Solution 
+{
+   public  int SumOddLengthSubarrays(int[] arr){ 
+    int result = 0;
+    for(int i = 0; i < arr.Length; ++i) {
+        result += (int)(((i + 1) * (arr.Length - i) + 1) / 2) * arr[i];
+ }
+   return result; 
+ }
+}
+
