@@ -1,0 +1,20 @@
+def solution(field, x, y):
+    res = []
+    for item in field:
+        temp = []
+        for j in item:
+            temp.append(-1)
+        res.append(temp)
+        
+    counter = 0
+      
+       
+    for i in range(x-1, x+2):
+        if 0 <= i < len(field):
+            for j in range(y-1,y+2):
+                if 0 <= j < len(field[i]):
+                    if field[i][j] == True:
+                        counter += 1
+    res[x][y] = counter
+    
+    return res
