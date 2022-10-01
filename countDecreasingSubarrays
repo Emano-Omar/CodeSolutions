@@ -1,0 +1,47 @@
+using System;
+public class Solution 
+{  
+ 
+ static int countDecreasingSubarrays(int[] arr) {
+    if(arr.Length == 1) return 1;    
+  
+    int counter = 0;
+    int tempCounter = 0;
+    for(int index = 0; index < arr.Length - 1; index++){
+        if(arr[index] > arr[index + 1]){
+            tempCounter++;
+        }
+        else{
+            tempCounter++;
+            counter += gauss(tempCounter);
+            tempCounter = 0;
+        }
+    }
+    
+    if(arr[arr.Length - 1] < arr[arr.Length - 2]){
+        tempCounter++;
+        counter += gauss(tempCounter);
+    }
+    else{
+        counter += gauss(tempCounter);
+        counter++;
+    }
+    
+    return counter;
+}
+
+static int gauss(int val){
+    return (val * (val + 1)) / 2;
+}
+public static void Main ()
+{
+	int[] arr = { 9, 8, 7, 6, 5 };
+	Console.Write(countDecreasingSubarrays(arr));
+}
+
+}
+	
+//output -> 15
+/*
+{10,10,10} -> 3
+*/
